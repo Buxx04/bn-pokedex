@@ -13,18 +13,20 @@ COPY package*.json ./
 #  dependencies
 RUN npm install
 
+RUN npm install -g @angular/cli
+
 # Copy source code
 COPY . .
 
 # Build Angular application
 RUN npm run build
 
-# Expose  port 4200
-EXPOSE 4793
+# Expose  port 4444
+EXPOSE 4444
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-  CMD curl -f http://localhost:4793/api/cards || exit 1
+  CMD curl -f http://localhost:4444/api/cards || exit 1
 
-#  Express server 
+#  Express server
 CMD ["node", "src/server/server.js"]
