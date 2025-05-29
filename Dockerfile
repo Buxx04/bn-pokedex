@@ -22,7 +22,7 @@ COPY . .
 RUN npm run build
 
 # Expose  port 4444
-EXPOSE 4444
+EXPOSE 4793
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
