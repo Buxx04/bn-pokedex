@@ -137,3 +137,4 @@ export class AppComponent implements OnInit {
     this.addedCards = this.addedCards.filter(card => card.id !== cardToRemove.id);
   }
 }
+
