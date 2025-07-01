@@ -1,0 +1,38 @@
+<li class="card-item">
+  <img [src]="card.imageUrl" [alt]="card.name" /><br />
+  <strong>{{ card.name }}</strong><br />
+  ประเภท: {{ card.subtype }}<br />
+
+  <div class="bar-label">HP Level</div>
+  <div class="bar-container">
+    <div class="bar-fill hp" [style.width.%]="card.hpLevel"></div>
+    <div class="bar-text">{{ card.hpLevel }}%</div>
+  </div>
+
+  <div class="bar-label">Strength Level</div>
+  <div class="bar-container">
+    <div class="bar-fill strength" [style.width.%]="card.strengthLevel"></div>
+    <div class="bar-text">{{ card.strengthLevel }}%</div>
+  </div>
+
+  <div class="bar-label">Weakness Level</div>
+  <div class="bar-container">
+    <div class="bar-fill weakness" [style.width.%]="card.weaknessLevel"></div>
+    <div class="bar-text">{{ card.weaknessLevel }}%</div>
+  </div>
+
+  <div class="bar-label">Total Damage</div>
+  <div class="bar-container">
+    <div class="bar-fill damage" [style.width.%]="card.damage"></div>
+    <div class="bar-text">{{ card.damage }}</div>
+  </div>
+
+  <div class="bar-label">Happiness Level</div>
+  <div class="bar-container">
+    <div class="bar-fill happiness" [style.width.%]="getHappinessWidth(card.happiness)"></div>
+    <div class="bar-text">{{ card.happiness ?? 0 | number : '1.1-1' }}</div>
+  </div>
+
+  <button *ngIf="showAddButton" class="addbt" (click)="onAddCard()">Add</button>
+  <button *ngIf="showRemoveButton" class="remove-btn" (click)="onRemoveCard()">ลบ</button>
+</li>

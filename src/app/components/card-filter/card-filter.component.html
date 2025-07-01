@@ -1,0 +1,18 @@
+<div class="filter-bar">
+  <input 
+    type="text" 
+    placeholder="ค้นหาชื่อการ์ด..." 
+    [value]="searchName"
+    (input)="onSearchNameChange($any($event.target).value)"
+    class="search-input" 
+  />
+
+  <select 
+    [value]="selectedType"
+    (change)="onSelectedTypeChange($any($event.target).value)"
+    class="type-select"
+  >
+    <option value="">-- เลือกประเภท --</option>
+    <option *ngFor="let type of availableTypes" [value]="type">{{ type }}</option>
+  </select>
+</div>
