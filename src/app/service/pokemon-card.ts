@@ -48,7 +48,7 @@ export interface PokemonCard {
   weaknesses?: Weakness[];
   resistances?: Resistance[];
 
-  // 🔽 ค่าที่คำนวณเพิ่มเข้าไป
+
   hpLevel?: number;
   strengthLevel?: number;
   weaknessLevel?: number;

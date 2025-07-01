@@ -1,119 +1,51 @@
 <div id="root">
 
   <div class="content">
-    <h1 class=" nav1">
-      Pokedex
-    </h1>
-    <div class="added-cards">
-
-      <h2>My Added Pokemon Cards</h2>
-      <ul>        <li *ngFor="let card of addedCards" class="card-item">
-          <img [src]="card.imageUrl" [alt]="card.name" /><br />
-          <strong>{{ card.name }}</strong><br />
-          ประเภท: {{ card.subtype }}<br />
-
-          <div class="bar-label">HP Level</div>
-          <div class="bar-container">
-            <div class="bar-fill hp" [style.width.%]="card.hpLevel"></div>
-            <div class="bar-text">{{ card.hpLevel }}%</div>
-          </div>
-
-          <div class="bar-label">Strength Level</div>
-          <div class="bar-container">
-            <div class="bar-fill strength" [style.width.%]="card.strengthLevel"></div>
-            <div class="bar-text">{{ card.strengthLevel }}%</div>
-          </div>
-
-          <div class="bar-label">Weakness Level</div>
-          <div class="bar-container">
-            <div class="bar-fill weakness" [style.width.%]="card.weaknessLevel"></div>
-            <div class="bar-text">{{ card.weaknessLevel }}%</div>
-          </div>
-
-          <div class="bar-label">Total Damage</div>
-          <div class="bar-container">
-            <div class="bar-fill damage" [style.width.%]="card.damage"></div>
-            <div class="bar-text">{{ card.damage }}</div>
-          </div>
-
-          <div class="bar-label">Happiness Level</div>
-          <div class="bar-container">
-            <div class="bar-fill happiness" [style.width.%]="getHappinessWidth(card.happiness)"></div>
-            <div class="bar-text">{{ card.happiness ?? 0 | number : '1.1-1' }}</div>
-          </div>
-          <button class="remove-btn" (click)="removeCard(card)">ลบ</button>
-        </li>
-      </ul>
-
-    </div>
-
-    <!-- Modal -->
-    <div class="modal-backdrop"  *ngIf="isModalOpen">
-      <div class="modal-box">
-        <div class="filter-bar">
-          <input type="text" placeholder="ค้นหาชื่อการ์ด..." [(ngModel)]="searchName" class="search-input" />
-
-          <select [(ngModel)]="selectedType" class="type-select">
-            <option value="">-- เลือกประเภท --</option>
-            <option *ngFor="let type of availableTypes" [value]="type">{{ type }}</option>
-          </select>
-        </div>
-        <div class="card-container">
-          <ul>            <li *ngFor="let card of filteredCards()" class="card-item">
-              <img [src]="card.imageUrl" [alt]="card.name" /><br />
-              <strong>{{ card.name }}</strong><br />
-              ประเภท: {{ card.subtype }}<br />
-
-              <div class="bar-label">HP Level</div>
-              <div class="bar-container">
-                <div class="bar-fill hp" [style.width.%]="card.hpLevel"></div>
-                <div class="bar-text">{{ card.hpLevel }}%</div>
-              </div>
-
-              <div class="bar-label">Strength Level</div>
-              <div class="bar-container">
-                <div class="bar-fill strength" [style.width.%]="card.strengthLevel"></div>
-                <div class="bar-text">{{ card.strengthLevel }}%</div>
-              </div>
-
-              <div class="bar-label">Weakness Level</div>
-              <div class="bar-container">
-                <div class="bar-fill weakness" [style.width.%]="card.weaknessLevel"></div>
-                <div class="bar-text">{{ card.weaknessLevel }}%</div>
-              </div>
-
-              <div class="bar-label">Total Damage</div>
-              <div class="bar-container">
-                <div class="bar-fill damage" [style.width.%]="card.damage"></div>
-                <div class="bar-text">{{ card.damage }}</div>
-              </div>
-
-              <div class="bar-label">Happiness Level</div>
-              <div class="bar-container">
-                <div class="bar-fill happiness" [style.width.%]="getHappinessWidth(card.happiness)"></div>
-                <div class="bar-text">{{ card.happiness ?? 0 | number : '1.1-1' }}</div>
-              </div>
-              <button class="addbt" (click)="addCard(card)">Add</button>
-            </li>
-
-          </ul>
-
-        </div>
-        <button class="bt2" (click)="closeModal()">ปิด</button>
-      </div>
-    </div>
+  <h1 class="nav1">Pokedex</h1>
 
 
-    <div class="button">
-      <button class="button1" (click)="openModal()">Add Pokemon</button>
-    </div>
-
-
-
-
+  <div class="added-cards">
+    <h2 class="h2">My Added Pokemon Cards</h2>
+    <ul>
+      <li *ngFor="let card of addedCards" class="card-item">
+        <app-card-item
+          [card]="card"
+          [showRemoveButton]="true"
+          (remove)="removeCard(card)">
+        </app-card-item>
+      </li>
+    </ul>
   </div>
 
 
+  <div class="modal-backdrop" *ngIf="isModalOpen">
+    <div class="modal-box">
+      <div class="filter-bar">
+        <input type="text" placeholder="ค้นหาชื่อการ์ด..." [(ngModel)]="searchName" class="search-input" />
+        <select [(ngModel)]="selectedType" class="type-select">
+          <option value="">-- เลือกประเภท --</option>
+          <option *ngFor="let type of availableTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
 
+      <ul>
+        <li *ngFor="let card of filteredCards()" class="card-item">
+          <app-card-item
+            [card]="card"
+            [showAddButton]="true"
+            (add)="addCard(card)">
+          </app-card-item>
+        </li>
+      </ul>
+
+      <button class="bt2" (click)="closeModal()">ปิด</button>
+    </div>
+  </div>
+
+  <!-- ปุ่มเปิด modal -->
+  <div class="button">
+    <button class="button1" (click)="openModal()">Add Pokemon</button>
+  </div>
+</div>
 
 </div>

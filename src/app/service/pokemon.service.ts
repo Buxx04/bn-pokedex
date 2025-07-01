@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';  // เพิ่ม import นี้
-import { environment } from '../environment/environment';
-import { PokemonCard } from '../models/pokemon-card';
+import { environment } from './environment';
+import { PokemonCard } from './pokemon-card';
 
 // เพิ่ม interface สำหรับ response ของ API
 interface ApiResponse {

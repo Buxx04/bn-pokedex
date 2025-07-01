@@ -1,4 +1,4 @@
-.content{
+.content {
   display: flex;
   flex-direction: column;
   height: 100%; 
@@ -18,8 +18,44 @@
   z-index: 1000;
 }
 
+.nav1 {
+  display: inline-block;
+  padding: 16px 32px;
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #f44336, #ff9800);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), inset 0 0 8px rgba(255, 255, 255, 0.2);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5), 0 0 6px #ffe082;
+  transition: transform 0.3s ease;
+}
+
+.nav1:hover {
+  transform: scale(1.02);
+}
+
+h2 {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff7043, #ffb74d);
+  color: #fff8e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), inset 0 0 6px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 3px #ffecb3, 1px 1px 2px #00000066;
+}
+
 .modal-box {
- background: white;
+  background: white;
   padding: 16px;
   border-radius: 8px;
   width: 95%;
@@ -31,42 +67,36 @@
   justify-content: flex-start;
   align-items: center;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  text-align: center; 
+  text-align: center;
   justify-items: center;
 }
 
-.nav1 {
-  text-align: center;
-  background-color: rgb(93, 131, 201);
-  color: aliceblue;
-  padding: 1%;
-}
-
-.button {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.button button {
-  background-color: #5d83c9;
-  color: white;
+.button1 {
+  display: block;
+  margin: 0 auto;
+  padding: 14px 32px;
+  font-size: 1.2rem;
+  font-weight: 800;
   border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
+  border-radius: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff7043, #ffa726);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 0 8px rgba(255, 167, 38, 0.4), inset 0 0 6px rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(93, 131, 201, 0.4);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.25s ease;
 }
 
-.button button:hover {
-  background-color: #466bb7;
-  transform: scale(1.05);
+.button1:hover {
+  background: linear-gradient(135deg, #ffa726, #ffd54f);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), 0 0 12px rgba(255, 213, 79, 0.6), inset 0 0 8px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
-.button button:active {
-  transform: scale(0.95);
+.button1:active {
+  transform: scale(0.98);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .bt2 {
@@ -93,20 +123,42 @@
 }
 
 .filter-bar {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
+  justify-content: center;
 }
 
 .search-input,
 .type-select {
-  padding: 6px 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #ff9800;
+  border-radius: 10px;
+  background: #fff3e0; /* โทนสว่างส้ม */
+  color: #5d4037; /* น้ำตาล */
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    inset 0 0 4px rgba(255, 152, 0, 0.2);
+  transition: all 0.3s ease;
+  outline: none;
 }
 
+.search-input:focus,
+.type-select:focus {
+  border-color: #ff7043;
+  box-shadow:
+    0 0 8px rgba(255, 112, 67, 0.5),
+    inset 0 0 6px rgba(255, 112, 67, 0.3);
+  background-color: #fff8e1;
+}
+
+.search-input::placeholder {
+  color: #a1887f;
+  font-weight: normal;
+}
 .card-container {
   flex: 1;
   overflow-y: auto;
@@ -117,6 +169,7 @@
 
 ul {
   list-style: none;
+    width: 100%;
   padding: 0;
   margin: 0;
   display: flex;
@@ -125,49 +178,68 @@ ul {
   justify-content: flex-start;
 }
 
-li.card-item {
+li.card-item,
+.added-cards li.card-item {
+  flex: 0 1 calc(33.333% - 12px);
+  max-width: calc(33.333% - 12px);
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 8px;
-  width: calc(33.333% - 8px);
+  padding: 6px 8px; /* ลด padding */
   background-color: #fff;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
 }
 
+@media (max-width: 900px) {
+  li.card-item,
+  .added-cards li.card-item {
+    flex: 0 1 calc(50% - 12px);
+    max-width: calc(50% - 12px);
+  }
+}
+
+@media (max-width: 600px) {
+  li.card-item,
+  .added-cards li.card-item {
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+}
+
 li.card-item img {
-  width: 80px;
+  width: 72px;          /* ลดขนาดรูป */
   height: auto;
-  max-height: 112px;
+  max-height: 96px;     /* ลดความสูง max */
   object-fit: contain;
 }
 
 li.card-item strong {
-  font-size: 14px;
+  font-size: 13px;      /* เล็กลงนิดหน่อย */
   display: block;
-  margin: 4px 0;
+  margin: 2px 0;        /* ลดระยะห่าง */
 }
 
 li.card-item .bar-label {
-  font-size: 11px;
-  margin-top: 4px;
+  font-size: 10px;
+  margin-top: 2px;
 }
 
 li.card-item .bar-container {
-  height: 12px;
-  margin-bottom: 3px;
+  height: 10px;         /* เตี้ยลงนิดหน่อย */
+  margin-bottom: 2px;
 }
 
 li.card-item .bar-text {
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 9px;
+  line-height: 11px;
 }
 
 li.card-item button {
   font-size: 12px;
   padding: 4px 8px;
-  margin-top: 6px;
+  margin-top: 4px;      /* ลด margin */
 }
+
 
 .bar-label {
   font-weight: bold;
@@ -236,18 +308,35 @@ li.card-item button {
   gap: 16px;
   padding: 0;
   margin: 0;
+  justify-content: flex-start;
 }
 
 .added-cards li.card-item {
+  flex: 0 1 calc(33.333% - 12px);
+  max-width: calc(33.333% - 12px);
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 12px;
-  width: 250px;
   background-color: #fff;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
 }
+
+@media (max-width: 900px) {
+  .added-cards li.card-item {
+    flex: 0 1 calc(50% - 12px);
+    max-width: calc(50% - 12px);
+  }
+}
+
+@media (max-width: 600px) {
+  .added-cards li.card-item {
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+}
+
 .addbt {
-  background-color: #28a745;      /* เขียวสด */
+  background-color: #28a745;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -260,13 +349,14 @@ li.card-item button {
 }
 
 .addbt:hover {
-  background-color: #218838;      /* เขียวเข้มเมื่อ hover */
+  background-color: #218838;
   transform: scale(1.05);
 }
 
 .addbt:active {
   transform: scale(0.95);
 }
+
 .remove-btn {
   background-color: #e74c3c;
   color: white;
@@ -281,4 +371,3 @@ li.card-item button {
 .remove-btn:hover {
   background-color: #c0392b;
 }
-

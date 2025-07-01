@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from './service/pokemon.service';
-import { PokemonCard } from './models/pokemon-card';
+import { PokemonCard } from './service/pokemon-card';
 
 const COLORS = {
   Psychic: '#f8a5c2',
